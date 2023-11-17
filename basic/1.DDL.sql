@@ -17,15 +17,6 @@ SHOW FULL COLUMNS FROM author;
 
 -- 테이블 생성문 조회 ( 중간에 ALTER하다보면 변경이 많이 돼서 마지막에 라이브서버에 올릴 때의 편리함을 위해 사용)
 SHOW CREATE TABLE posts;
--- CREATE TABLE `posts` (
---    `id` int(11) NOT NULL,
---    `title` varchar(255) DEFAULT NULL,
---    `content` varchar(255) DEFAULT NULL,
---    `author_id` int(11) DEFAULT NULL,
---    PRIMARY KEY (`id`),
---    KEY `author_id` (`author_id`),
---    CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`)
---  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
 
 -- 참조관계 및 제약조건 정보조회
 SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
@@ -33,6 +24,8 @@ WHERE TABLE_NAME = 'posts';
 
 -- 인덱스 조회
 SHOW INDEX FROM posts;
+-- 주요제약조건(pk, fk) => idnex가 자동생성
+-- index는 조회 성능을 위한 목차페이지
 -- BTREE구조의 ~~한 점 때문에 인덱스를 사용하면 빠르게 조회가 가능하다정도까지 정리할 능력 필요
 
 -- ALTER문
