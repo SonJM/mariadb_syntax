@@ -1,4 +1,24 @@
+CREATE DATABASE board;
+
 USE board;
+
+CREATE TABLE author(id INT, name VARCHAR(255), 
+email VARCHAR(255), password VARCHAR(255), test1 VARCHAR(255) PRIMARY KEY(id));
+
+CREATE TABLE posts(id INT, name VARCHAR(255), 
+email VARCHAR(255), password VARCHAR(255), test1 VARCHAR(255) PRIMARY KEY(id));
+
+SHOW TABLES;
+
+DESCRIBE author;
+
+SHOW FULL COLUMNS FROM author;
+
+SHOW CREATE TABLE author;
+
+SHOW INDEX FROM author;
+
+ALTER TABLE posts RENAME post;
 
 ALTER TABLE author ADD COLUMN address VARCHAR(255) DEFAULT NULL;
 
@@ -10,6 +30,7 @@ SHOW CREATE TABLE post;
 
 DROP TABLE IF EXISTS post;
 
+-- 테이블 생성문
 CREATE TABLE `post` (
    `id` int(11) NOT NULL,
    `title` varchar(255) DEFAULT NULL,
