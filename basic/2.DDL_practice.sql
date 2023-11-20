@@ -40,3 +40,18 @@ CREATE TABLE `post` (
    KEY `author_id` (`author_id`),
    CONSTRAINT `post_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`)
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
+ -- INDEX 생성 및 삭제
+SHOW INDEX FROM post;
+
+ALTER TABLE post MODIFY COLUMN title varchar(255) UNIQUE;
+ALTER TABLE post ADD CONSTRAINT title UNIQUE(title);
+-- UNIQUE의 경우에는 DROP시에 제약 조건과 INDEX 둘 다 같이 날아간다.
+ALTER TABLE post DROP INDEX title_2;
+
+-- 제약조건 확인
+SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+WHERE TABLE_NAME = 'post';
+
+-- 외래 키 삭제 (제약 조건은 삭제되나, INDEX는 삭제되지 않는다.)
+ALTER TABLE post DROP FOREIGN KEY post_ibfk_1;
